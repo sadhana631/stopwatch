@@ -4,7 +4,7 @@ import './index.css'
 
 class Stopwatch extends Component {
   state = {
-    isTimerRunning = false,
+    isTimerRunning : false,
     timeElapsedInSeconds:0,  
 }
 
@@ -19,20 +19,20 @@ onResetTimer = () => {
 
 onStopTimer = () => {
   clearInterval(this.timeInterval)
-  this.setState({isTimerRunning= false})  
+  this.setState({isTimerRunning: false})  
 }
 
 updateTime = () => {
   this.setState(prevState => ({
     timeElapsedInSeconds: prevState.timeElapsedInSeconds + 1,
-  })    
+  }))    
 }
 
 onStartTimer = () => {
   this.timeInterval = setInterval(this.updateTime, 1000)  
 }
 
-renderSeconds = () + {
+renderSeconds = () => {
   const {timeElapsedInSeconds} = this.state
   const seconds = Math.floor(timeElapsedInSeconds % 60)
 
@@ -45,11 +45,10 @@ renderSeconds = () + {
 renderMinutes = () => {
   const {timeElapsedInSeconds} = this.state
   const minutes = Math.floor(timeElapsedInSeconds / 60)
-
   if (minutes < 10) {
     return `0${minutes}`
   }
-  retur minutes
+  return minutes
 }
 
 return (
